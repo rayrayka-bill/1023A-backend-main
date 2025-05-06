@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Título Modificado</title>
+</head>
+<body>
+    <a href="./cadastro.html">Link Cadastro Estudante</a>
+    <h1>Lista de estudantes!</h1>
+    <ul id="minhalista">
+
+    </ul>
+    <script>
+        async function buscaDados(){
+            const resposta = await fetch("http://localhost:8000/estudantes")
+            console.log(resposta)
+            if(resposta.status ===200){
+                const dados = await resposta.json()
+                console.log(dados)
+                console.log(dados[0].nome)
+                const ul = document.getElementById("minhalista")
+                for (let i = 0; i < dados.length; i++) {
+                    const element = dados[i];
+                    const novoli = document.createElement("li")
+                    novoli.innerText = element.nome
+                    ul.appendChild(novoli)
+                }
+
+                //Criem li a partir do vetor dados
+                //Coloque o texto que vem do banco no li
+                //Adicione o li na ul com id "minhalista" 
+            }else{
+                if(resposta.status ===400){
+                    const dados = await resposta.json()
+                    alert(dados.mensagem)
+                }
+                else{
+                    alert("ERRO NÃO IDENTIFICADO");
+                }
+            }
+        }
+        buscaDados()
+    </script>
+</body>
+</html>
