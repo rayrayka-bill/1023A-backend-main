@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Título Modificado</title>
+    <title>biblioteca particular</title>
 </head>
 <body>
-    <a href="./cadastro.html">Link Cadastro Estudante</a>
-    <h1>Lista de estudantes!</h1>
+    <a href="./cadastro.html">ADCIONAR LIVRO NOVO</a>
+    <h1>LIVROS NA PRATILEIRA</h1>
     <ul id="minhalista">
 
     </ul>
     <script>
         async function buscaDados(){
-            const resposta = await fetch("http://localhost:8000/estudantes")
+            const resposta = await fetch("http://localhost:8000/livross")
             console.log(resposta)
             if(resposta.status ===200){
                 const dados = await resposta.json()
