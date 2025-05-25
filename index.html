@@ -6,30 +6,26 @@
     <title>biblioteca particular</title>
 </head>
 <body>
+    <header>
     <a href="./cadastro.html">ADCIONAR LIVRO NOVO</a>
     <h1>LIVROS NA PRATILEIRA</h1>
-    <ul id="minhalista">
-
-    </ul>
+    </header> 
+    <ul id="minhalista"></ul>
     <script>
         async function buscaDados(){
-            const resposta = await fetch("http://localhost:8000/livross")
+            const resposta = await fetch("http://localhost:8000/livros")
             console.log(resposta)
             if(resposta.status ===200){
                 const dados = await resposta.json()
                 console.log(dados)
-                console.log(dados[0].nome)
+                console.log(dados[0].titulo)
                 const ul = document.getElementById("minhalista")
                 for (let i = 0; i < dados.length; i++) {
                     const element = dados[i];
                     const novoli = document.createElement("li")
-                    novoli.innerText = element.nome
+                    novoli.innerText = element.titulo
                     ul.appendChild(novoli)
                 }
-
-                //Criem li a partir do vetor dados
-                //Coloque o texto que vem do banco no li
-                //Adicione o li na ul com id "minhalista" 
             }else{
                 if(resposta.status ===400){
                     const dados = await resposta.json()
@@ -42,5 +38,6 @@
         }
         buscaDados()
     </script>
+    <Footer>FRAMEWORKS</Footer>
 </body>
 </html>

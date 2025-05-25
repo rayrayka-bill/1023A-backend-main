@@ -43,7 +43,7 @@ app.get('/livros', async (request: FastifyRequest, reply: FastifyReply) => {
     }
 })
 app.post('/livros', async (request: FastifyRequest, reply: FastifyReply) => {
-    const {id,nome} = request.body as any
+    const {id,titulo,autora,preco,estrelas,descricao} = request.body as any
     try {
         const conn =  await mysql.createConnection({
             host: "localhost",
@@ -52,7 +52,7 @@ app.post('/livros', async (request: FastifyRequest, reply: FastifyReply) => {
             database: 'biblioteca',
             port: 3306
         })
-        const resultado =  await conn.query("INSERT INTO livros (id,nome) VALUES (?,?)",[id,nome])
+        const resultado =  await conn.query("INSERT INTO livros (id,titulo,autora,preco,estrelas,descricao) VALUES (?,?,?,?,?,?)",[id,titulo,autora,preco,estrelas,descricao])
         const [dados, camposTabela] = resultado
         reply.status(200).send(dados)
     }
