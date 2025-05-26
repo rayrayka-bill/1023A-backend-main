@@ -7,11 +7,11 @@
     <title>biblioteca particular</title>
 </head>
 <body>
-    <header>
-    <h1>LIVROS NA PRATILEIRA</h1>
-    <a href="./cadastro.html">ADCIONAR LIVRO NOVO</a>
-    </header> 
-    <section id="minhalista"></section>
+ 
+<header>
+<h1>LIVROS NA PRATELEIRA</h1>
+<a href="./cadastro.html">ADCIONAR LIVRO NOVO</a><section id="minhalista"></section>
+ </header> 
     <script>
         async function buscaDados() {
     const resposta = await fetch("http://localhost:8000/livros");
@@ -21,29 +21,31 @@
         console.log(dados);
         const secao = document.getElementById("minhalista"); 
         secao.innerHTML = "<h2>Livros cadastrados</h2>"; 
-        for (let i = 0; i < dados.length; i++) {
-            const element = dados[i];
-            const card = document.createElement("div");
-            card.className = "livro-card";
-            card.innerHTML = `
-                <h3>${element.titulo}</h3>
-                <p><strong>Autora:</strong> ${element.autora}</p>
-                <p><strong>Preço:</strong> R$ ${element.preco ? parseFloat(element.preco).toFixed(2) : "0.00"}</p>
-                <p><strong>Estrelas:</strong> ${"⭐".repeat(element.estrelas)}</p>
-                <p><strong>Descrição:</strong> ${element.descricao || "Sem descrição."}</p>
+
+        
+     for (let i = 0; i < dados.length; i++) {
+        const element = dados[i];
+        const card = document.createElement("div");
+        card.className = "livro-card";
+        card.innerHTML = `
+         <h3>${element.titulo}</h3>
+         <p><strong>Autora:</strong> ${element.autora}</p>
+          <p><strong>Preço:</strong> R$ ${element.preco ? parseFloat(element.preco).toFixed(2) : "0.00"}</p>
+          <p><strong>Estrelas:</strong> ${"⭐".repeat(element.estrelas)}</p>
+          <p><strong>Descrição:</strong> ${element.descricao || "Sem descrição."}</p>
             `;
-            secao.appendChild(card);
-        }
-    } else {
-        if (resposta.status === 400) {
-            const dados = await resposta.json();
-            alert(dados.mensagem);
-        } else {
-            alert("ERRO NÃO IDENTIFICADO");
-        }
-    }
+        secao.appendChild(card);
+     }
+} else {
+      if (resposta.status === 400) {
+          const dados = await resposta.json();
+           alert(dados.mensagem);
+     } else {
+        alert("ERRO NÃO IDENTIFICADO");
+      }
+  }
 }       
-        buscaDados()
+  buscaDados()
     </script>
 </body>
 </html>
