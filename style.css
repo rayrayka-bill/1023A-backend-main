@@ -1,16 +1,12 @@
-/* Estilo geral da página */
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #0d0d0d; /* Preto bem escuro */
-    color: #ffffff; /* Texto branco */
+    background-color: #0d0d0d; /* Preto escuro */
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px;
+    padding: 0px;
 }
-
-/* Cabeçalho */
 header {
     width: 100%;
     text-align: center;
@@ -19,45 +15,36 @@ header {
     color: #ffffff;
     margin-bottom: 30px;
 }
-
 header a {
     color: #ffffff;
     text-decoration: none;
     font-weight: bold;
     font-size: 18px;
 }
-
 header a:hover {
     color: #c299ff;
 }
-
-/* Título */
 header h1 {
     margin-top: 10px;
     font-size: 32px;
-    color: #c299ff; /* Roxo claro */
+    color: #c299ff;
 }
-
-/* Formulário */
 form {
-    background-color: #1a001f; /* Fundo roxo muito escuro */
+    background-color: #1a001f;
     padding: 25px;
     border-radius: 10px;
     width: 100%;
     max-width: 500px;
-    box-shadow: 0 0 15px rgba(194, 153, 255, 0.2); /* Sombra roxa */
+    box-shadow: 0 0 15px rgba(194, 153, 255, 0.2);
+    margin-bottom: 40px;
 }
-
-/* Labels */
 form label {
     display: block;
     margin-top: 15px;
     margin-bottom: 5px;
-    color: #ffffff;
     font-weight: bold;
+    color: #ffffff;
 }
-
-/* Inputs e Textarea */
 form input[type="text"],
 form input[type="number"],
 form textarea {
@@ -67,31 +54,55 @@ form textarea {
     border-radius: 5px;
     background-color: #2a003a;
     color: #ffffff;
-    box-sizing: border-box;
+    font-size: 14px;
 }
-
 form input[type="text"]:focus,
 form input[type="number"]:focus,
 form textarea:focus {
     outline: none;
     background-color: #3e0052;
 }
-
-/* Botão de envio */
 #botaoCadastro {
     margin-top: 20px;
     padding: 12px;
     width: 100%;
     border: none;
     border-radius: 5px;
-    background-color: #8000ff; /* Roxo vibrante */
+    background-color: #8000ff;
     color: #ffffff;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
 #botaoCadastro:hover {
-    background-color: #a64dff; /* Roxo claro */
+    background-color: #a64dff;
+}
+#minhalista {
+    width: 100%;
+    max-width: 800px;
+    text-align: left;
+}
+#minhalista h2 {
+    color: #c299ff;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #8000ff;
+    padding-bottom: 10px;
+}
+.livro-card {
+    background-color: #1a001f;
+    color: #ffffff;
+    border: 1px solid #8000ff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(194, 153, 255, 0.2);
+}
+.livro-card h3 {
+    color: #a64dff;
+    margin-bottom: 10px;
+}
+.livro-card p {
+    margin: 5px 0;
+    line-height: 1.4;
 }

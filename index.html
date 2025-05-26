@@ -8,35 +8,41 @@
 </head>
 <body>
     <header>
-    <a href="./cadastro.html">ADCIONAR LIVRO NOVO</a>
     <h1>LIVROS NA PRATILEIRA</h1>
+    <a href="./cadastro.html">ADCIONAR LIVRO NOVO</a>
     </header> 
-    <ul id="minhalista"></ul>
+    <section id="minhalista"></section>
     <script>
-        async function buscaDados(){
-            const resposta = await fetch("http://localhost:8000/livros")
-            console.log(resposta)
-            if(resposta.status ===200){
-                const dados = await resposta.json()
-                console.log(dados)
-                console.log(dados[0].titulo)
-                const ul = document.getElementById("minhalista")
-                for (let i = 0; i < dados.length; i++) {
-                    const element = dados[i];
-                    const novoli = document.createElement("li")
-                    novoli.innerText = element.titulo
-                    ul.appendChild(novoli)
-                }
-            }else{
-                if(resposta.status ===400){
-                    const dados = await resposta.json()
-                    alert(dados.mensagem)
-                }
-                else{
-                    alert("ERRO NÃO IDENTIFICADO");
-                }
-            }
+        async function buscaDados() {
+    const resposta = await fetch("http://localhost:8000/livros");
+    console.log(resposta);
+    if (resposta.status === 200) {
+        const dados = await resposta.json();
+        console.log(dados);
+        const secao = document.getElementById("minhalista"); 
+        secao.innerHTML = "<h2>Livros cadastrados</h2>"; 
+        for (let i = 0; i < dados.length; i++) {
+            const element = dados[i];
+            const card = document.createElement("div");
+            card.className = "livro-card";
+            card.innerHTML = `
+                <h3>${element.titulo}</h3>
+                <p><strong>Autora:</strong> ${element.autora}</p>
+                <p><strong>Preço:</strong> R$ ${element.preco ? parseFloat(element.preco).toFixed(2) : "0.00"}</p>
+                <p><strong>Estrelas:</strong> ${"⭐".repeat(element.estrelas)}</p>
+                <p><strong>Descrição:</strong> ${element.descricao || "Sem descrição."}</p>
+            `;
+            secao.appendChild(card);
         }
+    } else {
+        if (resposta.status === 400) {
+            const dados = await resposta.json();
+            alert(dados.mensagem);
+        } else {
+            alert("ERRO NÃO IDENTIFICADO");
+        }
+    }
+}       
         buscaDados()
     </script>
 </body>

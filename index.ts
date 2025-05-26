@@ -16,7 +16,7 @@ app.get('/livros', async (request: FastifyRequest, reply: FastifyReply) => {
             database: 'biblioteca',
             port: 3306
         })
-        const resultado =  await conn.query("SELECT * FROM biblioteca")
+        const resultado =  await conn.query("SELECT * FROM livros")
         const [dados, camposTabela] = resultado
         reply.status(200).send(dados)
     }
